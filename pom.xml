@@ -5,10 +5,10 @@
     <artifactId>slack-java-webhook</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Slack Webhook integration in Java</name>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.5</java.version>
-        <gson.version>2.3.1</gson.version>
+        <java.version>1.6</java.version>
     </properties>
 
     <developers>
