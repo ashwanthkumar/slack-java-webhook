@@ -1,3 +1,5 @@
+[![Build Status](https://snap-ci.com/ashwanthkumar/slack-java-webhook/branch/master/build_image)](https://snap-ci.com/ashwanthkumar/slack-java-webhook/branch/master)
+
 # slack-java-webhook
 Java Client to Slack's Webhook feature. 
 
