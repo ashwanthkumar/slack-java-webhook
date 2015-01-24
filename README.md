@@ -42,14 +42,8 @@ new SlackMessage("Some text can be")
     .italic("Italic")
     .text(". :)")
 ```
-With `SlackAttachment` you can create much more sophisticated rich text as specified in https://api.slack.com/docs/attachments. Example usage
-```java
-new SlackAttachment()
-    .author("ashwanthkumar")
-    .author("ashwanthkumar", "https://avatars0.githubusercontent.com/u/600279?v=3&s=40")
-```
 
-Available methods
+Available methods on `SlackMessage`
 - `text`
 - `link`
 - `bold`
@@ -57,6 +51,22 @@ Available methods
 - `code`
 - `preformatted`
 - `quote`
+
+With `SlackAttachment` you can create much more sophisticated rich text as specified in https://api.slack.com/docs/attachments. Example usage
+```java
+new SlackAttachment()
+    .author("ashwanthkumar")
+    .author("ashwanthkumar", "https://avatars0.githubusercontent.com/u/600279?v=3&s=40")
+```
+
+Available methods on `SlackAttachment`
+- `fallback`
+- `color`
+- `preText`
+- `author`
+- `title`
+- `text`
+- `addField`
 
 ## License
 
