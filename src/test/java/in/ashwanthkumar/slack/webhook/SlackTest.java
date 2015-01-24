@@ -34,4 +34,14 @@ public class SlackTest {
         assertThat(channelCaptor.getValue(), is("@slackbot"));
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowIllegaArgumentExceptionWhenWebHookUrlIsNotGiven() {
+        new Slack(null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowIllegalArgumentExceptionWhenUrlIsNotInSlacWebHookFormat() {
+        new Slack("http://www.foo.com/webhooks");
+    }
+
 }
