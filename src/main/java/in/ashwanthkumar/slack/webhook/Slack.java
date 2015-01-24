@@ -36,7 +36,7 @@ public class Slack {
      *
      * @param channel Channel to send
      */
-    public Slack setChannel(String channel) {
+    public Slack sendToChannel(String channel) {
         this.channel = "#" + channel;
         return this;
     }

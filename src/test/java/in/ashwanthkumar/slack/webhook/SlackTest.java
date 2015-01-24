@@ -20,7 +20,7 @@ public class SlackTest {
         ArgumentCaptor<String> channelCaptor = ArgumentCaptor.forClass(String.class);
         SlackMessage message = new SlackMessage("hello");
         doNothing().when(slackService).push(anyString(), eq(message), anyString(), anyString(), channelCaptor.capture());
-        slack.setChannel("dev-group").push(message);
+        slack.sendToChannel("dev-group").push(message);
         assertThat(channelCaptor.getValue(), is("#dev-group"));
     }
 
