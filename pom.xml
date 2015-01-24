@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>in.ashwanthkumar</groupId>
     <artifactId>slack-java-webhook</artifactId>
-    <version>0.0.3</version>
+    <version>0.0.4-SNAPSHOT</version>
     <name>Slack Webhook (Java)</name>
     <description>Slack Webhook API in Java</description>
 
