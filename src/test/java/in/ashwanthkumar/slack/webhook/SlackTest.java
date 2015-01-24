@@ -1,5 +1,6 @@
 package in.ashwanthkumar.slack.webhook;
 
+import in.ashwanthkumar.slack.webhook.service.SlackService;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 

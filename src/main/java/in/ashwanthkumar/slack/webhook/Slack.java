@@ -1,5 +1,7 @@
 package in.ashwanthkumar.slack.webhook;
 
+import in.ashwanthkumar.slack.webhook.service.SlackService;
+
 import java.io.IOException;
 
 import static in.ashwanthkumar.slack.webhook.util.StringUtils.isEmpty;

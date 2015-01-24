@@ -1,4 +1,4 @@
-package in.ashwanthkumar.slack.webhook;
+package in.ashwanthkumar.slack.webhook.service;
 
 import com.google.api.client.http.GenericUrl;
 import com.google.api.client.http.HttpRequest;
@@ -7,6 +7,7 @@ import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.http.json.JsonHttpContent;
 import com.google.api.client.json.gson.GsonFactory;
+import in.ashwanthkumar.slack.webhook.SlackMessage;
 
 import java.io.IOException;
 import java.util.HashMap;
