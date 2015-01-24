@@ -1,8 +1,10 @@
 package in.ashwanthkumar.slack.webhook;
 
 import in.ashwanthkumar.slack.webhook.service.SlackService;
+import in.ashwanthkumar.slack.webhook.util.Lists;
 
 import java.io.IOException;
+import java.util.List;
 
 import static in.ashwanthkumar.slack.webhook.util.StringUtils.isEmpty;
 
@@ -83,5 +85,27 @@ public class Slack {
         if (message != null) {
             slackService.push(webhookUrl, message, user, icon, channel);
         }
+    }
+
+    /**
+     * Publish message as SlackAttachment
+     *
+     * @param attachment SlackAttachment to send
+     * @throws IOException
+     */
+    public void push(SlackAttachment attachment) throws IOException {
+        if (attachment != null) {
+            slackService.push(webhookUrl, new SlackMessage(), user, icon, channel, Lists.of(attachment));
+        }
+    }
+
+    /**
+     * Publish message as SlackAttachment
+     *
+     * @param attachments SlackAttachment to send
+     * @throws IOException
+     */
+    public void push(List<SlackAttachment> attachments) throws IOException {
+        slackService.push(webhookUrl, new SlackMessage(), user, icon, channel, attachments);
     }
 }

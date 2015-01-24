@@ -5,6 +5,7 @@ import in.ashwanthkumar.slack.webhook.util.StringUtils;
 
 /**
  * Wrapper to build rich text content in Slack
+ * Ref - https://api.slack.com/docs/formatting
  */
 public class SlackMessage {
     private StringBuilder textBuffer = new StringBuilder();
@@ -57,11 +58,21 @@ public class SlackMessage {
     }
 
     public SlackMessage quote(String text) {
-        textBuffer.append("> ").append(text).append("\n");
+        textBuffer.append("\n> ").append(text).append("\n");
         return this;
     }
 
     public String toString() {
         return textBuffer.toString();
+    }
+
+    public String rawText() {
+        // We're not removing link because it's readable the way it is.
+        return textBuffer.toString()
+            .replaceAll("(.*)\\*(.*)\\*(.*)", "$1$2$3") // Remove bold formatting
+            .replaceAll("(.*)_(.*)_(.*)", "$1$2$3")     // Remove italic formatting
+            .replaceAll("(.*)```(.*)```(.*)", "$1$2$3") // Remove pretext formatting
+            .replaceAll("(.*)`(.*)`(.*)", "$1$2$3")     // Remove code formatting
+            .replaceAll("\n>\\s+(.*)\n", "$1");         // Remove Quote formatting
     }
 }
