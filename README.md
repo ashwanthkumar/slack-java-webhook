@@ -10,13 +10,13 @@ For Maven,
 <dependency>
   <groupId>in.ashwanthkumar</groupId>
   <artifactId>slack-java-webhook</artifactId>
-  <version>0.0.2</version>
+  <version>0.0.3</version>
 </dependency>
 ```
 
 For SBT,
 ```
-libraryDependencies += "in.ashwanthkumar" % "slack-java-webhook" % "0.0.2"
+libraryDependencies += "in.ashwanthkumar" % "slack-java-webhook" % "0.0.3"
 ```
 
 ## Usage
