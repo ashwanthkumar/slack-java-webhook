@@ -4,7 +4,8 @@
     <groupId>in.ashwanthkumar</groupId>
     <artifactId>slack-java-webhook</artifactId>
     <version>0.0.1</version>
-    <name>Slack Webhook integration in Java</name>
+    <name>Slack Webhook (Java)</name>
+    <description>Slack Webhook API in Java</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -145,6 +146,17 @@
                                 </goals>
                             </execution>
                         </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>1.6.3</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>
