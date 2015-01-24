@@ -16,8 +16,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static in.ashwanthkumar.slack.webhook.util.StringUtils.isNotEmpty;
-import static in.ashwanthkumar.slack.webhook.util.StringUtils.startsWith;
+import static in.ashwanthkumar.utils.lang.StringUtils.isNotEmpty;
+import static in.ashwanthkumar.utils.lang.StringUtils.startsWith;
+
 
 public class SlackService {
     private final HttpTransport HTTP_TRANSPORT = new NetHttpTransport();

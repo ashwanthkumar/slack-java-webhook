@@ -23,6 +23,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>in.ashwanthkumar</groupId>
+            <artifactId>my-java-utils</artifactId>
+            <version>0.0.3</version>
+        </dependency>
+        <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.3.1</version>

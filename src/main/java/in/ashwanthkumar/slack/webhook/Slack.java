@@ -1,12 +1,13 @@
 package in.ashwanthkumar.slack.webhook;
 
 import in.ashwanthkumar.slack.webhook.service.SlackService;
-import in.ashwanthkumar.slack.webhook.util.Lists;
+import in.ashwanthkumar.utils.collections.Lists;
 
 import java.io.IOException;
 import java.util.List;
 
-import static in.ashwanthkumar.slack.webhook.util.StringUtils.isEmpty;
+import static in.ashwanthkumar.utils.lang.StringUtils.isEmpty;
+
 
 /**
  * Slack provides programmatic access to Slack web hooks

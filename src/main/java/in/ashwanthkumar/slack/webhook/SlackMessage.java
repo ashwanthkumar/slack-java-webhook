@@ -1,7 +1,7 @@
 package in.ashwanthkumar.slack.webhook;
 
 
-import in.ashwanthkumar.slack.webhook.util.StringUtils;
+import in.ashwanthkumar.utils.lang.StringUtils;
 
 /**
  * Wrapper to build rich text content in Slack
