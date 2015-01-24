@@ -22,13 +22,14 @@ libraryDependencies += "in.ashwanthkumar" % "slack-java-webhook" % "0.0.3"
 ## Usage
 ```java
 // Using SlackMessage
-new Slack().icon(":smiling_imp:") // Anything from http://www.emoji-cheat-sheet.com/ should work here
+new Slack(webhookUrl)
+    .icon(":smiling_imp:") // Ref - http://www.emoji-cheat-sheet.com/
     .sendToUser("slackbot")
     .displayName("slack-java-client")
-    .push(new SlackMessage("Text from my Slack-Java-Client"));
+    .push(new SlackMessage("Text from my ").bold("Slack-Java-Client"));
 
 // Using SlackAttachment
-new Slack()
+new Slack(webhookUrl)
     .sendToUser("slackbot")
     .displayName("slack-java-client")
     .push(new SlackAttachment("Text from my Slack-Java-Client").author("ashwanthkumar", "https://avatars0.githubusercontent.com/u/600279?v=3&s=40"));
