@@ -27,6 +27,8 @@ public class SlackAttachment {
     private String titleLink;
     @SerializedName("text")
     private String text;
+    @SerializedName("image_url")
+    private String imageUrl;
     @SerializedName("fields")
     private List<Field> fields = new ArrayList<Field>();
 
@@ -99,6 +101,11 @@ public class SlackAttachment {
     public SlackAttachment title(String title, String link) {
         this.titleLink = link;
         return title(title);
+    }
+
+    public SlackAttachment imageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+        return this;
     }
 
     public SlackAttachment text(String text) {
