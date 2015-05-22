@@ -67,6 +67,7 @@ Available methods on `SlackAttachment`
 - `author`
 - `title`
 - `text`
+- `imageUrl`
 - `addField`
 
 ## License
