@@ -31,7 +31,9 @@ public class SlackAttachment {
     private String imageUrl;
     @SerializedName("fields")
     private List<Field> fields = new ArrayList<Field>();
-
+    @SerializedName("mrkdwn_in")
+    private List<String> markdown = new ArrayList<String>();
+    
     public SlackAttachment(String text) {
         text(text);
     }
@@ -122,6 +124,11 @@ public class SlackAttachment {
         return this;
     }
 
+    public SlackAttachment addMarkdownIn(String markdownin) {
+        this.markdown.add(markdownin);
+        return this;
+    }
+    
     public String getText() {
         return text;
     }
