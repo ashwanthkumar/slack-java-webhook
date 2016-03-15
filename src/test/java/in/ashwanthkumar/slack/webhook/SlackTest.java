@@ -40,9 +40,4 @@ public class SlackTest {
         new Slack(null);
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void shouldThrowIllegalArgumentExceptionWhenUrlIsNotInSlacWebHookFormat() {
-        new Slack("http://www.foo.com/webhooks");
-    }
-
 }

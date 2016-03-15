@@ -22,8 +22,6 @@ public class Slack {
     public Slack(String webhookUrl) {
         if (isEmpty(webhookUrl)) {
             throw new IllegalArgumentException("Webhook url is not provided");
-        } else if (!webhookUrl.startsWith("https://hooks.slack.com/services/")) {
-            throw new IllegalArgumentException("Slack Webhook url starts with https://hooks.slack.com/services/");
         }
         this.webhookUrl = webhookUrl;
     }
