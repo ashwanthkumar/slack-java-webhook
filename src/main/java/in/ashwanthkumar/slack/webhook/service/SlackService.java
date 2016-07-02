@@ -2,7 +2,6 @@ package in.ashwanthkumar.slack.webhook.service;
 
 import com.google.api.client.http.GenericUrl;
 import com.google.api.client.http.HttpRequestFactory;
-import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.UrlEncodedContent;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.util.Maps;
@@ -11,6 +10,7 @@ import in.ashwanthkumar.slack.webhook.SlackAttachment;
 import in.ashwanthkumar.slack.webhook.SlackMessage;
 
 import java.io.IOException;
+import java.net.Proxy;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,8 +21,17 @@ import static in.ashwanthkumar.utils.lang.StringUtils.startsWith;
 
 
 public class SlackService {
-    private final HttpTransport HTTP_TRANSPORT = new NetHttpTransport();
-    private final HttpRequestFactory requestFactory = HTTP_TRANSPORT.createRequestFactory();
+    private final HttpRequestFactory requestFactory;
+
+    public SlackService(Proxy proxy) {
+        NetHttpTransport.Builder builder = new NetHttpTransport.Builder();
+        builder.setProxy(proxy);
+        requestFactory = builder.build().createRequestFactory();
+    }
+
+    public SlackService() {
+        this(null);
+    }
 
     public void push(String webHookUrl, SlackMessage text, String username, String imageOrIcon, String destination, List<SlackAttachment> attachments) throws IOException {
         Map<String, Object> payload = new HashMap<String, Object>();
