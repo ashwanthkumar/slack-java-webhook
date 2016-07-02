@@ -25,7 +25,7 @@
         <dependency>
             <groupId>in.ashwanthkumar</groupId>
             <artifactId>my-java-utils</artifactId>
-            <version>0.0.3</version>
+            <version>0.0.7</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
