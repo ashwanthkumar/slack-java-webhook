@@ -20,7 +20,7 @@ public class SlackTest {
         Slack slack = new Slack("mockUrl", slackService);
         ArgumentCaptor<String> channelCaptor = ArgumentCaptor.forClass(String.class);
         SlackMessage message = new SlackMessage("hello");
-        doNothing().when(slackService).push(anyString(), eq(message), anyString(), anyString(), channelCaptor.capture());
+        doNothing().when(slackService).push(anyString(), eq(message), anyString(), anyString(), anyString(), channelCaptor.capture());
         slack.sendToChannel("dev-group").push(message);
         assertThat(channelCaptor.getValue(), is("#dev-group"));
     }
@@ -30,7 +30,7 @@ public class SlackTest {
         Slack slack = new Slack("mockUrl", slackService);
         ArgumentCaptor<String> channelCaptor = ArgumentCaptor.forClass(String.class);
         SlackMessage message = new SlackMessage("hello");
-        doNothing().when(slackService).push(anyString(), eq(message), anyString(), anyString(), channelCaptor.capture());
+        doNothing().when(slackService).push(anyString(), eq(message), anyString(), anyString(), anyString(), channelCaptor.capture());
         slack.sendToUser("slackbot").push(message);
         assertThat(channelCaptor.getValue(), is("@slackbot"));
     }

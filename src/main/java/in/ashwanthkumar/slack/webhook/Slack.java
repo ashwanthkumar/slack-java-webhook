@@ -19,6 +19,7 @@ public class Slack {
     private String channel;
     private String user;
     private String icon;
+    private String parse;
     private SlackService slackService;
 
     public Slack(String webhookUrl, Proxy proxy) {
@@ -86,6 +87,16 @@ public class Slack {
     }
 
     /**
+     * Possible values being "full" or "none"
+     * @param parse
+     * @return
+     */
+    public Slack parse(String parse) {
+        this.parse = parse;
+        return this;
+    }
+
+    /**
      * Publishes messages to Slack Webhook
      *
      * @param message Message to send
@@ -93,7 +104,7 @@ public class Slack {
      */
     public void push(SlackMessage message) throws IOException {
         if (message != null) {
-            slackService.push(webhookUrl, message, user, icon, channel);
+            slackService.push(webhookUrl, message, user, icon, parse, channel);
         }
     }
 
@@ -105,7 +116,7 @@ public class Slack {
      */
     public void push(SlackAttachment attachment) throws IOException {
         if (attachment != null) {
-            slackService.push(webhookUrl, new SlackMessage(), user, icon, channel, Lists.of(attachment));
+            slackService.push(webhookUrl, new SlackMessage(), user, icon, channel, parse, Lists.of(attachment));
         }
     }
 
@@ -116,6 +127,6 @@ public class Slack {
      * @throws IOException
      */
     public void push(List<SlackAttachment> attachments) throws IOException {
-        slackService.push(webhookUrl, new SlackMessage(), user, icon, channel, attachments);
+        slackService.push(webhookUrl, new SlackMessage(), user, icon, channel, parse, attachments);
     }
 }
