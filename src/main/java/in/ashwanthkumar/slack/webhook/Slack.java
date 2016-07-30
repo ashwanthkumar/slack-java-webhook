@@ -97,6 +97,16 @@ public class Slack {
     }
 
     /**
+     * Update the webhook url of the underlying Slack service
+     * @param webhookUrl
+     * @return
+     */
+    public Slack setWebhookUrl(String webhookUrl) {
+        this.webhookUrl = webhookUrl;
+        return this;
+    }
+
+    /**
      * Publishes messages to Slack Webhook
      *
      * @param message Message to send
