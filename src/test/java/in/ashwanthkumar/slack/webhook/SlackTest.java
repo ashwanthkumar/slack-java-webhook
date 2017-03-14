@@ -40,4 +40,26 @@ public class SlackTest {
         new Slack(null);
     }
 
+    @Test
+    public void shouldAddColonToIconName() throws IOException {
+        Slack slack = new Slack("mockUrl", slackService);
+        slack.icon("ghost");
+        ArgumentCaptor<String> iconCaptor = ArgumentCaptor.forClass(String.class);
+        SlackMessage message = new SlackMessage("hello");
+        doNothing().when(slackService).push(anyString(), eq(message), anyString(), iconCaptor.capture(), anyString(), anyString());
+        slack.sendToChannel("test-channel").push(message);
+        assertThat(iconCaptor.getValue(), is(":ghost:"));
+    }
+
+    @Test
+    public void shouldNotAddColonToIconNameIfAlreadyExists() throws IOException {
+        Slack slack = new Slack("mockUrl", slackService);
+        slack.icon(":ghost:");
+        ArgumentCaptor<String> iconCaptor = ArgumentCaptor.forClass(String.class);
+        SlackMessage message = new SlackMessage("hello");
+        doNothing().when(slackService).push(anyString(), eq(message), anyString(), iconCaptor.capture(), anyString(), anyString());
+        slack.sendToChannel("test-channel").push(message);
+        assertThat(iconCaptor.getValue(), is(":ghost:"));
+    }
+
 }
