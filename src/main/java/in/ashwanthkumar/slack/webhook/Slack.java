@@ -82,6 +82,15 @@ public class Slack {
      * @param imageOrIcon Icon Image URL or emoji code from http://www.emoji-cheat-sheet.com/
      */
     public Slack icon(String imageOrIcon) {
+        if (imageOrIcon != null && !imageOrIcon.isEmpty()) {
+            if (!imageOrIcon.startsWith(":")) {
+                imageOrIcon = ":" + imageOrIcon;
+            }
+            if (!imageOrIcon.endsWith(":")) {
+                imageOrIcon = imageOrIcon + ":";
+            }
+        }
+
         this.icon = imageOrIcon;
         return this;
     }
