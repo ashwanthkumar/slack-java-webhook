@@ -29,6 +29,14 @@ public class SlackAttachment {
     private String text;
     @SerializedName("image_url")
     private String imageUrl;
+    @SerializedName("thumb_url")
+    private String thumbUrl;
+    @SerializedName("footer")
+    private String footer;
+    @SerializedName("footer_icon")
+    private String footerIcon;
+    @SerializedName("ts")
+    private int timestamp;
     @SerializedName("fields")
     private List<Field> fields = new ArrayList<Field>();
     @SerializedName("mrkdwn_in")
@@ -117,6 +125,26 @@ public class SlackAttachment {
 
     public SlackAttachment text(SlackMessage message) {
         return text(message.toString());
+    }
+
+    public SlackAttachment thumbUrl(String thumbUrl) {
+        this.thumbUrl = thumbUrl;
+        return this;
+    }
+
+    public SlackAttachment footer(String footer) {
+        this.footer = footer;
+        return this;
+    }
+
+    public SlackAttachment footerIcon(String footerIcon) {
+        this.footerIcon = footerIcon;
+        return this;
+    }
+
+    public SlackAttachment timestamp(int timestamp) {
+        this.timestamp = timestamp;
+        return this;
     }
 
     public SlackAttachment addField(Field field) {
