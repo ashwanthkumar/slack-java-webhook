@@ -10,14 +10,16 @@ For Maven,
 <dependency>
   <groupId>in.ashwanthkumar</groupId>
   <artifactId>slack-java-webhook</artifactId>
-  <version>0.0.7</version>
+  <version>${slack-java-webhook.version}</version>
 </dependency>
 ```
 
 For SBT,
 ```
-libraryDependencies += "in.ashwanthkumar" % "slack-java-webhook" % "0.0.7"
+libraryDependencies += "in.ashwanthkumar" % "slack-java-webhook" % scalaJavaWebhookVersion
 ```
+
+Latest version of *slack-java-webhook* is [![scala-java-webhook on Maven Central](https://img.shields.io/maven-central/v/in.ashwanthkumar/slack-java-webhook.svg?label=slack-java-webhook&style=plastic)](https://maven-badges.herokuapp.com/maven-central/in.ashwanthkumar/slack-java-webhook)
 
 ## Usage
 ```java
