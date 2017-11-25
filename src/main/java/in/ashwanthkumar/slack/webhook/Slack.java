@@ -2,6 +2,7 @@ package in.ashwanthkumar.slack.webhook;
 
 import in.ashwanthkumar.slack.webhook.service.SlackService;
 import in.ashwanthkumar.utils.collections.Lists;
+import in.ashwanthkumar.utils.lang.StringUtils;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -82,7 +83,7 @@ public class Slack {
      * @param imageOrIcon Icon Image URL or emoji code from http://www.emoji-cheat-sheet.com/
      */
     public Slack icon(String imageOrIcon) {
-        if (imageOrIcon != null && !imageOrIcon.isEmpty()) {
+        if (StringUtils.isNotEmpty(imageOrIcon) && !StringUtils.startsWith(imageOrIcon, "http")) {
             if (!imageOrIcon.startsWith(":")) {
                 imageOrIcon = ":" + imageOrIcon;
             }

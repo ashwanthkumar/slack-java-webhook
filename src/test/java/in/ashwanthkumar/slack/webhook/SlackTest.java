@@ -62,4 +62,15 @@ public class SlackTest {
         assertThat(iconCaptor.getValue(), is(":ghost:"));
     }
 
+    @Test
+    public void shouldNotAddColonToIconNameOrImageIfUrl() throws IOException {
+        Slack slack = new Slack("mockUrl", slackService);
+        slack.icon("http://github.com/i/am/sorry.png");
+        ArgumentCaptor<String> iconCaptor = ArgumentCaptor.forClass(String.class);
+        SlackMessage message = new SlackMessage("hello");
+        doNothing().when(slackService).push(anyString(), eq(message), anyString(), iconCaptor.capture(), anyString(), anyString());
+        slack.sendToChannel("test-channel").push(message);
+        assertThat(iconCaptor.getValue(), is("http://github.com/i/am/sorry.png"));
+    }
+
 }
