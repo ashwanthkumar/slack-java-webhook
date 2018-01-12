@@ -1,7 +1,6 @@
 package in.ashwanthkumar.slack.webhook;
 
 
-import in.ashwanthkumar.utils.lang.StringUtils;
 
 /**
  * Wrapper to build rich text content in Slack
@@ -28,10 +27,10 @@ public class SlackMessage {
     }
 
     public SlackMessage link(String url, String text) {
-        if (StringUtils.isNotEmpty(text)) {
-            textBuffer.append("<").append(url).append("|").append(text).append(">");
-        } else {
+        if (text == null || "".equals(text.trim())) {
             textBuffer.append("<").append(url).append(">");
+        } else {
+            textBuffer.append("<").append(url).append("|").append(text).append(">");
         }
 
         return this;

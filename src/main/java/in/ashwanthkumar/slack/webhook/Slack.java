@@ -1,15 +1,12 @@
 package in.ashwanthkumar.slack.webhook;
 
 import in.ashwanthkumar.slack.webhook.service.SlackService;
-import in.ashwanthkumar.utils.collections.Lists;
-import in.ashwanthkumar.utils.lang.StringUtils;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
+import java.util.Collections;
 import java.util.List;
-
-import static in.ashwanthkumar.utils.lang.StringUtils.isEmpty;
 
 
 /**
@@ -24,7 +21,7 @@ public class Slack {
     private SlackService slackService;
 
     public Slack(String webhookUrl, Proxy proxy) {
-        if (isEmpty(webhookUrl)) {
+        if (webhookUrl == null || "".equals(webhookUrl)) {
             throw new IllegalArgumentException("Webhook url is not provided");
         }
         this.webhookUrl = webhookUrl;
@@ -136,7 +133,7 @@ public class Slack {
      */
     public void push(SlackAttachment attachment) throws IOException {
         if (attachment != null) {
-            slackService.push(webhookUrl, new SlackMessage(), user, icon, channel, parse, Lists.of(attachment));
+            slackService.push(webhookUrl, new SlackMessage(), user, icon, channel, parse, Collections.singletonList(attachment));
         }
     }
 

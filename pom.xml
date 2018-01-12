@@ -23,19 +23,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>in.ashwanthkumar</groupId>
-            <artifactId>my-java-utils</artifactId>
-            <version>0.0.7</version>
-        </dependency>
-        <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.3.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.http-client</groupId>
-            <artifactId>google-http-client-gson</artifactId>
-            <version>1.19.0</version>
         </dependency>
 
         <dependency>
@@ -161,6 +151,28 @@
                             <serverId>ossrh</serverId>
                             <nexusUrl>https://oss.sonatype.org/</nexusUrl>
                             <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+
+        <profile>
+            <id>charles-proxy</id>
+            <build>
+                <plugins>
+                    <!-- note this is surefire, and not failsafe.  IntelliJ uses surefire config when context menu running-->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <systemPropertyVariables>
+                                <http.proxyHost>localhost</http.proxyHost>
+                                <http.proxyPort>8888</http.proxyPort>
+                                <https.proxyHost>localhost</https.proxyHost>
+                                <https.proxyPort>8888</https.proxyPort>
+                            </systemPropertyVariables>
                         </configuration>
                     </plugin>
                 </plugins>
