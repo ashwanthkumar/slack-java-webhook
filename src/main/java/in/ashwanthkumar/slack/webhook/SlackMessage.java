@@ -41,6 +41,16 @@ public class SlackMessage {
         textBuffer.append("*").append(text).append("*");
         return this;
     }
+    
+    public SlackMessage mentionUserID(String userID) {
+        textBuffer.append("<@").append(userID).append(">");
+        return this;
+    }
+    
+    public SlackMessage mentionChannelID(String channelID) {
+        textBuffer.append("<#").append(channelID).append(">");
+        return this;
+    }
 
     public SlackMessage italic(String text) {
         textBuffer.append("_").append(text).append("_");
