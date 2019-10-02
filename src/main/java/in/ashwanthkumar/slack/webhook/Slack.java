@@ -149,4 +149,30 @@ public class Slack {
     public void push(List<SlackAttachment> attachments) throws IOException {
         slackService.push(webhookUrl, new SlackMessage(), user, icon, channel, parse, attachments);
     }
+    
+    /**
+     * Publish message with attachment
+     *
+     * @param message Message to send
+     * @param attachment SlackAttachment to send
+     * @throws IOException
+     */
+    public void push(SlackMessage message, SlackAttachment attachment) throws IOException {
+        if (attachment != null) {
+            slackService.push(webhookUrl, message, user, icon, channel, parse, Lists.of(attachment));
+        }
+    }
+    
+    /**
+     * Publish message with attachments
+     *
+     * @param message Message to send
+     * @param attachments SlackAttachment to send
+     * @throws IOException
+     */
+    public void push(SlackMessage message, List<SlackAttachment> attachments) throws IOException {
+        if (attachment != null) {
+            slackService.push(webhookUrl, message, user, icon, channel, parse, attachments);
+        }
+    }
 }
