@@ -171,7 +171,7 @@ public class Slack {
      * @throws IOException
      */
     public void push(SlackMessage message, List<SlackAttachment> attachments) throws IOException {
-        if (attachment != null) {
+        if (attachments != null) {
             slackService.push(webhookUrl, message, user, icon, channel, parse, attachments);
         }
     }
