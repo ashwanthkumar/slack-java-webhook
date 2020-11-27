@@ -21,6 +21,7 @@ public class Slack {
     private String user;
     private String icon;
     private String parse;
+    private String blocks;
     private SlackService slackService;
 
     public Slack(String webhookUrl, Proxy proxy) {
@@ -115,6 +116,10 @@ public class Slack {
         this.webhookUrl = webhookUrl;
         return this;
     }
+    public Slack setBlocks(String blocks) {
+        this.blocks = "[" +blocks + "]";
+        return this;
+    }
 
     /**
      * Publishes messages to Slack Webhook
@@ -124,7 +129,7 @@ public class Slack {
      */
     public void push(SlackMessage message) throws IOException {
         if (message != null) {
-            slackService.push(webhookUrl, message, user, icon, parse, channel);
+            slackService.push(webhookUrl, message, user, icon, parse, channel,blocks);
         }
     }
 
@@ -136,7 +141,7 @@ public class Slack {
      */
     public void push(SlackAttachment attachment) throws IOException {
         if (attachment != null) {
-            slackService.push(webhookUrl, new SlackMessage(), user, icon, channel, parse, Lists.of(attachment));
+            slackService.push(webhookUrl, new SlackMessage(), user, icon, channel, parse, Lists.of(attachment),blocks);
         }
     }
 
@@ -147,7 +152,7 @@ public class Slack {
      * @throws IOException
      */
     public void push(List<SlackAttachment> attachments) throws IOException {
-        slackService.push(webhookUrl, new SlackMessage(), user, icon, channel, parse, attachments);
+        slackService.push(webhookUrl, new SlackMessage(), user, icon, channel, parse, attachments,blocks);
     }
     
     /**
@@ -159,7 +164,7 @@ public class Slack {
      */
     public void push(SlackMessage message, SlackAttachment attachment) throws IOException {
         if (attachment != null) {
-            slackService.push(webhookUrl, message, user, icon, channel, parse, Lists.of(attachment));
+            slackService.push(webhookUrl, message, user, icon, channel, parse, Lists.of(attachment),blocks);
         }
     }
     
@@ -172,7 +177,7 @@ public class Slack {
      */
     public void push(SlackMessage message, List<SlackAttachment> attachments) throws IOException {
         if (attachments != null) {
-            slackService.push(webhookUrl, message, user, icon, channel, parse, attachments);
+            slackService.push(webhookUrl, message, user, icon, channel, parse, attachments,blocks);
         }
     }
 }

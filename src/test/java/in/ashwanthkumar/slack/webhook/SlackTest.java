@@ -20,9 +20,9 @@ public class SlackTest {
         Slack slack = new Slack("mockUrl", slackService);
         ArgumentCaptor<String> channelCaptor = ArgumentCaptor.forClass(String.class);
         SlackMessage message = new SlackMessage("hello");
-        doNothing().when(slackService).push(anyString(), eq(message), anyString(), anyString(), anyString(), channelCaptor.capture());
-        slack.sendToChannel("dev-group").push(message);
-        assertThat(channelCaptor.getValue(), is("#dev-group"));
+        doNothing().when(slackService).push(anyString(), eq(message), anyString(), anyString(), anyString(), channelCaptor.capture(),anyString());
+        slack.sendToChannel("test_slack").push(message);
+        assertThat(channelCaptor.getValue(), is("#test_slack"));
     }
 
     @Test
@@ -30,7 +30,7 @@ public class SlackTest {
         Slack slack = new Slack("mockUrl", slackService);
         ArgumentCaptor<String> channelCaptor = ArgumentCaptor.forClass(String.class);
         SlackMessage message = new SlackMessage("hello");
-        doNothing().when(slackService).push(anyString(), eq(message), anyString(), anyString(), anyString(), channelCaptor.capture());
+        doNothing().when(slackService).push(anyString(), eq(message), anyString(), anyString(), anyString(), channelCaptor.capture(),anyString());
         slack.sendToUser("slackbot").push(message);
         assertThat(channelCaptor.getValue(), is("@slackbot"));
     }
@@ -46,7 +46,7 @@ public class SlackTest {
         slack.icon("ghost");
         ArgumentCaptor<String> iconCaptor = ArgumentCaptor.forClass(String.class);
         SlackMessage message = new SlackMessage("hello");
-        doNothing().when(slackService).push(anyString(), eq(message), anyString(), iconCaptor.capture(), anyString(), anyString());
+        doNothing().when(slackService).push(anyString(), eq(message), anyString(), iconCaptor.capture(), anyString(), anyString(),anyString());
         slack.sendToChannel("test-channel").push(message);
         assertThat(iconCaptor.getValue(), is(":ghost:"));
     }
@@ -57,7 +57,7 @@ public class SlackTest {
         slack.icon(":ghost:");
         ArgumentCaptor<String> iconCaptor = ArgumentCaptor.forClass(String.class);
         SlackMessage message = new SlackMessage("hello");
-        doNothing().when(slackService).push(anyString(), eq(message), anyString(), iconCaptor.capture(), anyString(), anyString());
+        doNothing().when(slackService).push(anyString(), eq(message), anyString(), iconCaptor.capture(), anyString(), anyString(),anyString());
         slack.sendToChannel("test-channel").push(message);
         assertThat(iconCaptor.getValue(), is(":ghost:"));
     }
@@ -68,7 +68,7 @@ public class SlackTest {
         slack.icon("http://github.com/i/am/sorry.png");
         ArgumentCaptor<String> iconCaptor = ArgumentCaptor.forClass(String.class);
         SlackMessage message = new SlackMessage("hello");
-        doNothing().when(slackService).push(anyString(), eq(message), anyString(), iconCaptor.capture(), anyString(), anyString());
+        doNothing().when(slackService).push(anyString(), eq(message), anyString(), iconCaptor.capture(), anyString(), anyString(),anyString());
         slack.sendToChannel("test-channel").push(message);
         assertThat(iconCaptor.getValue(), is("http://github.com/i/am/sorry.png"));
     }

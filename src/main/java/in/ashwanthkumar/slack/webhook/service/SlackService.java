@@ -33,7 +33,7 @@ public class SlackService {
         this(null);
     }
 
-    public void push(String webHookUrl, SlackMessage text, String username, String imageOrIcon, String destination, String parse, List<SlackAttachment> attachments) throws IOException {
+    public void push(String webHookUrl, SlackMessage text, String username, String imageOrIcon, String destination, String parse, List<SlackAttachment> attachments,String blocks) throws IOException {
         Map<String, Object> payload = new HashMap<String, Object>();
         if (isNotEmpty(username)) {
             payload.put("username", username);
@@ -52,12 +52,15 @@ public class SlackService {
         if (isNotEmpty(parse)) {
             payload.put("parse", parse);
         }
+        if (isNotEmpty(blocks)) {
+            payload.put("blocks", blocks);
+        }
         payload.put("text", text.toString());
         execute(webHookUrl, payload);
     }
 
-    public void push(String webHookUrl, SlackMessage text, String username, String imageOrIcon, String parse, String destination) throws IOException {
-        push(webHookUrl, text, username, imageOrIcon, destination, parse, new ArrayList<SlackAttachment>());
+    public void push(String webHookUrl, SlackMessage text, String username, String imageOrIcon, String parse, String destination,String blocks) throws IOException {
+        push(webHookUrl, text, username, imageOrIcon, destination, parse, new ArrayList<SlackAttachment>(),blocks);
     }
 
     public void execute(String webHookUrl, Map<String, Object> payload) throws IOException {
